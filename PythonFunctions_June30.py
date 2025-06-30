@@ -1,39 +1,39 @@
-# #1. Create a Calculator — Use functions for operations like add, subtract, multiply, divide.
-#
-# def add(a,b):
-#     return a+b
-#
-# def sub(a,b):
-#     return a-b
-#
-# def mul(a,b):
-#     return a*b
-#
-# def div(a,b):
-#     if b == 0:
-#         return 'error! Division by zero'
-#     return a/b
-#
-# def power(a,b):
-#     return a**b
-#
-# print('select Operation: +, -, *, /, **')
-# operation = input("enter operation: ")
-# a = float(input("enter a: "))
-# b = float(input("enter b: "))
-#
-# if operation == '+':
-#     print('sum is :', add(a,b))
-# elif operation == '-':
-#     print('sub is :', sub(a,b))
-# elif operation == '*':
-#     print('mul is :', mul(a,b))
-# elif operation == '/':
-#     print('div is :', div(a,b))
-# elif operation == '**':
-#     print('power is :', power(a,b))
-# else:
-#     print('Operator is not available')
+#1. Create a Calculator — Use functions for operations like add, subtract, multiply, divide.
+
+def add(a,b):
+    return a+b
+
+def sub(a,b):
+    return a-b
+
+def mul(a,b):
+    return a*b
+
+def div(a,b):
+    if b == 0:
+        return 'error! Division by zero'
+    return a/b
+
+def power(a,b):
+    return a**b
+
+print('select Operation: +, -, *, /, **')
+operation = input("enter operation: ")
+a = float(input("enter a: "))
+b = float(input("enter b: "))
+
+if operation == '+':
+    print('sum is :', add(a,b))
+elif operation == '-':
+    print('sub is :', sub(a,b))
+elif operation == '*':
+    print('mul is :', mul(a,b))
+elif operation == '/':
+    print('div is :', div(a,b))
+elif operation == '**':
+    print('power is :', power(a,b))
+else:
+    print('Operator is not available')
 
 
 #2. Student Management System — Use keyword and default arguments to input student data.
@@ -127,3 +127,98 @@ for i in sortbyScore:
 
 #8. Quiz Application — Functions to ask questions, validate answers, and keep score.
 
+def askQuestion(question,answer):
+    user_answer = input(question+'  ')
+    if user_answer.lower() == answer.lower():
+        print('Correct!')
+        return 1
+    else:
+        print('WRONG!')
+        return 0
+
+def quiz():
+    score = 0
+
+    score+= askQuestion('1.which year is this :','2025')
+    score+= askQuestion('2.what is the square root of 5 :','25')
+    score+= askQuestion('3.what is the least number :','0')
+    score+= askQuestion('4.what is the colour of moon :','white')
+    print('your score is :',score)
+
+quiz()
+
+
+#9. String Analyzer — Function that counts vowels, consonants, spaces, and symbols.
+
+def stringAnalyzer(text):
+    vowels = 0
+    consonants = 0
+    spaces = 0
+    symbols = 0
+
+    for char in text:
+        if char.lower() in 'aeiou':
+            vowels += 1
+        elif char.isalpha():
+            consonants += 1
+        elif char.isspace():
+            spaces += 1
+        else:
+            symbols += 1
+
+    print('vowels :', vowels)
+    print('consonants :',consonants)
+    print('spaces :',spaces)
+    print('symbols :',symbols)
+
+stringAnalyzer('hello! how are you?')
+
+
+#10. Bank Transaction System — Simulate deposits and withdrawals using functions and return values.
+
+balance = 10000
+pin = "9999"
+
+def checkPin():
+    entered = input('enter pin :')
+    return entered == pin
+
+def deposit(amount):
+    if checkPin():
+        global balance
+        balance = balance + amount
+        print('Deposited amount is :',amount)
+        print('Your total balance is :',balance)
+    else:
+        print('You entered wrong PIN,Try again')
+
+
+def withdraw(amount):
+    if checkPin():
+        global balance
+        if amount <= balance:
+            balance = balance - amount
+            print('Withdrawn amount is :',amount)
+            print('Your total balance is :', balance)
+        else:
+            print('Not enough balance')
+
+    else:
+         print('You entered wrong PIN,Try again')
+
+def checkBalance():
+    if checkPin():
+        print('Your balance is :',balance)
+    else:
+        print('You entered wrong PIN,Try again')
+
+
+withdraw(500)
+
+
+'''
+Global variable: If we need to modify a variable inside the function
+which was written in out of the function, we need to use global variable in the function
+other wise it treats as local variable
+
+'''
